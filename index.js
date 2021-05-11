@@ -1,35 +1,23 @@
-/**
- *  1. Read from one file and write into another using streams
- */
+
 
 const fs = require("fs");
-const crypto = require("crypto");
 const events = require("events");
+
+const { compareMD5Hash, readAndWriteFile } = require('./customUtils.js');
 
 const inputFile = "./inputFile.txt";
 const outputFile = "./outputFile.txt";
 
-const readStream = fs.createReadStream(inputFile, "UTF-8");
-const writeStream = fs.createWriteStream(outputFile, "UTF-8");
-
-readStream.pipe(writeStream);
+/**
+ *  1. Read from one file and write into another using streams
+ */
+ (async () => {
+    await readAndWriteFile(inputFile, outputFile);
+})();
 
 /**
  *  2. Calculate md5 hash : Compare checksum of input & output files created above
  */
-
-const getFileHash = filename => new Promise(resolve => {
-    const hash = crypto.createHash('md5');
-    fs.createReadStream(filename)
-        .on('data', data => hash.update(data))
-        .on('end', () => resolve(hash.digest('hex')));
-});
-
-const compareMD5Hash = async (inputFile, outputFile) => {
-    const inputHash = await getFileHash(inputFile);
-    const outputHash = await getFileHash(outputFile);
-    return inputHash === outputHash;
-};
 
 // output
 (async () => {

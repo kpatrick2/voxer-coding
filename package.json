@@ -1,0 +1,22 @@
+{
+  "name": "streams-node",
+  "version": "1.0.0",
+  "description": "Coding Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpatrick2/voxer-coding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kpatrick2/voxer-coding/issues"
+  },
+  "homepage": "https://github.com/kpatrick2/voxer-coding#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
